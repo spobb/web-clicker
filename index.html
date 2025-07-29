@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta dollarset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Web Clicker</title>
+
+		<link rel="stylesheet" href="src/css/main.css" />
+	</head>
+	<body>
+		<main>
+			<div class="left-side code-editor">
+				<div class="tab-select">
+					<span class="active">editor</span>
+					<span>upgrades</span>
+					<span></span>
+					<span></span>
+				</div>
+				<canvas id="code-editor"></canvas>
+			</div>
+			<div class="center">
+				<div class="trackers">
+					<p><span id="html-tag-display">0</span> $</p>
+				</div>
+				<div class="clicker-button">
+					<button id="clicker-button">type</button>
+				</div>
+			</div>
+			<div class="right-side building-list"></div>
+		</main>
+		<script type="module" src="src/js/main.js"></script>
+	</body>
+</html>
