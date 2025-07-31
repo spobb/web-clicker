@@ -10,6 +10,7 @@ class Game {
         // GAME RULES
         this.tickRate = 1000 / 20;
         this.textIndex = 0;
+        this.currentText = 0;
 
         // GAME VALUES
         this.baseClickPower = 1;
@@ -35,6 +36,7 @@ class Game {
     produce(delta) {
         this.productionPerTick = 0;
         this.buildings.forEach(b => {
+            b.checkAvailable();
             this.productionPerTick += b.production / 20;
         })
         this.dollars.amount += this.productionPerTick * delta;
@@ -52,8 +54,6 @@ class Game {
             this.buildings.push(buildingInstance);
         });
     }
-
-
 
     get clickPower() {
         return this.baseClickPower;

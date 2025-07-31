@@ -1,13 +1,13 @@
 import { Buyable } from "./buyable.class.js";
 
-export class Building extends Buyable {
-    constructor({ id, name, description, perSecond, basePrice, currency, isUnique = false }) {
-        super(basePrice, currency, isUnique);
+export class Upgrade extends Buyable {
+    constructor({ id, name, description, basePrice, currency }) {
+        super(basePrice, currency);
         this.id = id;
         this.name = name;
         this.description = description;
-        this.perSecond = perSecond;
         this.elementReference;
+        this.isBought = false;
     }
 
     get production() {

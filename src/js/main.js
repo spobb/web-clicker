@@ -33,8 +33,18 @@ function update(time) {
 
 function draw() {
     htmlTagDisplay.innerText = Math.floor(Game.dollars.amount);
+    writeToCanvas();
 
-    writeToCanvas(Game.textIndex);
+    Game.buildings.forEach(b => {
+        if (!b.checkAvailable()) {
+            b.elementReference.classList.add('unavailable');
+            return;
+        }
+        if (b.elementReference.classList.contains('unavailable')) {
+            b.elementReference.classList.remove('unavailable');
+            return;
+        }
+    })
 }
 
 async function initDisplay() {
@@ -48,9 +58,10 @@ async function initDisplay() {
 document.addEventListener('DOMContentLoaded', async () => {
     await initDisplay();
     buildingElements.forEach(el => {
-        el.addEventListener('click', (e) => {
-            const buildingClass = Game.buildings.find(b => b.id == el.id);
+        const buildingClass = Game.buildings.find(b => b.id == el.id);
+        buildingClass.elementReference = el;
 
+        el.addEventListener('click', (e) => {
             buildingClass.buy(1);
 
             const counterDisplay = el.querySelector('.counter-display');

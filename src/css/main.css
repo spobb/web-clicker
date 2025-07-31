@@ -77,4 +77,9 @@ main {
     &:hover {
         background-color: #343435;
     }
+    user-select: none;
+}
+.unavailable {
+    filter: brightness(50%);
+    cursor: not-allowed;
 }

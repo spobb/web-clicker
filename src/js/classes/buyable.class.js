@@ -1,18 +1,14 @@
 import Game from '../game.js';
 
 export class Buyable {
-    constructor(basePrice, currency, isUnique = false) {
+    constructor(basePrice, currency) {
         this.currency = currency;
         this.basePrice = basePrice;
         this.price = basePrice;
         this.amount = 0;
-        this.isUnique = isUnique;
     }
 
     buy(amount) {
-        if (this.isUnique && this.amount >= 1) {
-            return;
-        }
         if (this.price > Game.dollars.amount) {
             return;
         }
@@ -34,5 +30,9 @@ export class Buyable {
 
     scalePrice() {
         this.price = Math.floor(this.basePrice * 1.15 ** this.amount);
+    }
+
+    checkAvailable() {
+        return Game[this.currency].amount >= this.price;
     }
 }
